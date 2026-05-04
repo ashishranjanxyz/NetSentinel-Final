@@ -1,3 +1,22 @@
 [build]
   publish = "site"
   command = "mkdir -p site/static && cp templates/index.html site/index.html && cp -R static/. site/static/"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/scan"
+  to = "/.netlify/functions/scan"
+  status = 200
+
+[[redirects]]
+  from = "/api/stats"
+  to = "/.netlify/functions/stats"
+  status = 200
+
+[[redirects]]
+  from = "/api/pdf"
+  to = "/.netlify/functions/pdf"
+  status = 200
